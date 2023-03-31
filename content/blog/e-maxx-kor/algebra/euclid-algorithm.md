@@ -9,7 +9,7 @@ tags: e-maxx-kor, algebra
 
 # 최대공약수 계산을 위한 유클리드 호제법
 
-음이 아닌 두 정수 $a$ 와 $b$ 가 주어졌을 때, 두 수의  **최대공약수** (greatest common divisor, GCD), 즉 두 수의 약수이면서 가장 큰 수를 구해야한다. 이는 흔히 $\gcd(a, b)$ 로 표기된다. 수학적으로 이는 다음과 같이 정의된다: 
+음이 아닌 두 정수 $a$ 와 $b$ 가 주어졌을 때, 두 수의 **최대공약수** (greatest common divisor, GCD), 즉 두 수의 약수이면서 가장 큰 수를 구해야한다. 이는 흔히 $\gcd(a, b)$ 로 표기된다. 수학적으로 이는 다음과 같이 정의된다:
 $$\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$$
 (여기서 기호 "$\mid$" 는 약수를 나타낸다, 다시 말해, "$k \mid a$" 는 "$k$ 는 $a$ 의 약수" 임을 의미한다)
 
@@ -23,7 +23,7 @@ $$\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$
 
 알고리즘은 아주 간단하다:
 
-$$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\\\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
+$$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
 
 ## 구현
 
@@ -70,7 +70,7 @@ $a$ 를 $b$ 로 나눈 나머지를 다음과 같이 표시한다:
 $$a \bmod b = a - b \cdot \Bigl\lfloor\dfrac{a}{b}\Bigr\rfloor$$
 
 이것으로 $d \mid (a \bmod b)$ 가 성립함을 알 수 있고, 다음과 같은 약수-배수 관계를 알 수 있다:
-$$\begin{cases}d \mid b,\\\\ d \mid (a \mod b)\end{cases}$$
+$$\begin{cases}d \mid b,\\ d \mid (a \mod b)\end{cases}$$
 
 어떤 세 숫자 $p$, $q$, $r$ 에 대하여, 만약 $p\mid q$ 이고, $p\mid r$ 이면 $p\mid \gcd(q, r)$ 이라는 사실을 이용할 것이다. 이것을 이 문제에 적용시키면, 다음을 얻을 수 있다:
 $$d = \gcd(a, b) \mid \gcd(b, a \mod b)$$
@@ -111,9 +111,9 @@ int lcm (int a, int b) {
 사실은, 모듈러 연산을 사용하지 않으면서 더 빠른 최대공약수 알고리즘을 만들 수 있다.
 다음과 같은 몇개의 특징에 기반하고 있다:
 
-  - 만약 두 수 모두 짝수라면 두 수에서 2를 나누고 나머지 두 수의 최대공약수를 계산할 수 있다: $\gcd(2a, 2b) = 2 \gcd(a, b)$.
-  - 만약 한 수는 짝수이고 나머지 수는 홀수라면 짝수인 수에서 2를 나누고 나머지 두 수의 최대공약수를 계산할 수 있다: $\gcd(2a, b) = \gcd(a, b)$ if $b$ is odd.
-  - 만약 두 수 모두 홀수라면, 어떤 한 수 에서 다른 한수를 뺀 후 나머지 두 수의 최대공약수를 계산할 수 있다 : $\gcd(a, b) = \gcd(b, a-b)$ (이것은 기존의 유클리드 호제법의 정당성 증명과 같은 방식으로 증명될 수 있다.)
+- 만약 두 수 모두 짝수라면 두 수에서 2를 나누고 나머지 두 수의 최대공약수를 계산할 수 있다: $\gcd(2a, 2b) = 2 \gcd(a, b)$.
+- 만약 한 수는 짝수이고 나머지 수는 홀수라면 짝수인 수에서 2를 나누고 나머지 두 수의 최대공약수를 계산할 수 있다: $\gcd(2a, b) = \gcd(a, b)$ if $b$ is odd.
+- 만약 두 수 모두 홀수라면, 어떤 한 수 에서 다른 한수를 뺀 후 나머지 두 수의 최대공약수를 계산할 수 있다 : $\gcd(a, b) = \gcd(b, a-b)$ (이것은 기존의 유클리드 호제법의 정당성 증명과 같은 방식으로 증명될 수 있다.)
 
 이러한 특성과 GCC의 빠른 속도의 비트 함수를 사용한다면 더 빠른 버전의 함수를 구현할 수 있다:
 

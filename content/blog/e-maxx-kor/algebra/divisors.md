@@ -11,7 +11,7 @@ tags: e-maxx-kor, algebra
 
 ## 약수 개수
 
-약수 $d$의 소인수분해는 당연히 $n$의 소인수분해에 포함되어야 한다. 예를 들어, $6 = 2 \cdot 3$은 $60 = 2^2 \cdot 3 \cdot 5$의 약수이다. 
+약수 $d$의 소인수분해는 당연히 $n$의 소인수분해에 포함되어야 한다. 예를 들어, $6 = 2 \cdot 3$은 $60 = 2^2 \cdot 3 \cdot 5$의 약수이다.
 따라서 $n$의 소인수분해가 갖는 서로 다른 부분집합을 모두 찾으면 약수 개수 문제를 해결할 수 있다.
 
 일반적으로 원소가 $x$개인 집합은 $2^x$개의 부분집합을 갖는다. 그러나 집합에 중복되는 원소가 있으면 이 사실은 적용할 수 없다. 이 문제의 경우 $n$의 소인수분해에서 어떤 소인수는 여러번 등장할 수 있다.
@@ -24,39 +24,44 @@ $$d(n) = (e_1 + 1) \cdot (e_2 + 1) \cdots (e_k + 1)$$
 
 이에 대한 사고방식은 다음과 같다:
 
-* 만약 소인수가 한 가지 존재하여 $n = p_1^{e_1}$인 경우, $n$의 약수는 $1, p_1, p_1^2, \dots, p_1^{e_1}$으로 $(e_1 + 1)$개 존재한다.
+- 만약 소인수가 한 가지 존재하여 $n = p_1^{e_1}$인 경우, $n$의 약수는 $1, p_1, p_1^2, \dots, p_1^{e_1}$으로 $(e_1 + 1)$개 존재한다.
 
-* 만약 소인수가 두 가지 존재하여 $n = p_1^{e_1} \cdot p_2^{e_2}$인 경우, 다음 표를 사용해 모든 약수를 나열할 수 있다.
-$$\begin{array}{c|ccccc}
-& 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
-\hline
-1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
-p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\\\
-p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\\\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
-\end{array}$$
+- 만약 소인수가 두 가지 존재하여 $n = p_1^{e_1} \cdot p_2^{e_2}$인 경우, 다음 표를 사용해 모든 약수를 나열할 수 있다.
+
+  $$
+  \begin{array}{c|ccccc}
+  & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\
+  \hline
+  1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\
+  p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\
+  p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\
+  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+  p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\
+  \end{array}
+  $$
+
   약수 개수는 $(e_1 + 1) \cdot (e_2 + 1)$이다.
 
-* 두 가지 이상의 서로 다른 소인수가 있는 경우에도 비슷하게 논증할 수 있다.
+- 두 가지 이상의 서로 다른 소인수가 있는 경우에도 비슷하게 논증할 수 있다.
 
 ## 약수 합
 
 이전 절에서 사용했던 논증을 다시 사용할 수 있다.
 
-* 만약 소인수가 한 가지 존재하여 $n = p_1^{e_1}$인 경우, 합은 다음과 같다:
+- 만약 소인수가 한 가지 존재하여 $n = p_1^{e_1}$인 경우, 합은 다음과 같다:
   $$1 + p_1 + p_1^2 + \dots + p_1^{e_1} = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1}$$
 
-* 만약 소인수가 두 가지 존재하여 $n = p_1^{e_1} \cdot p_2^{e_2}$인 경우, 이전과 같이 약수를 표로 나열할 수 있다.
+- 만약 소인수가 두 가지 존재하여 $n = p_1^{e_1} \cdot p_2^{e_2}$인 경우, 이전과 같이 약수를 표로 나열할 수 있다.
   한 가지 차이점은, 이제 표에 나온 약수 개수를 세는 대신 약수를 모두 더하려고 한다는 것이다.
   각 조합의 합을 다음과 같이 표현할 수 있다.
   $$\left(1 + p_1 + p_1^2 + \dots + p_1^{e_1}\right) \cdot \left(1 + p_2 + p_2^2 + \dots + p_2^{e_2}\right)$$
   $$ = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1}$$
 
-* 일반적으로 $n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$인 경우, 다음 공식을 얻는다.
+- 일반적으로 $n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$인 경우, 다음 공식을 얻는다.
   $$\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}$$
 
 ## 곱셈적 함수
+
 곱셈적 함수(multiplicative function)는 서로소인 $a$, $b$에 대해
 $$f(a \cdot b) = f(a) \cdot f(b)$$
 를 만족하는 함수 $f$이다.
@@ -67,6 +72,6 @@ $$f(a \cdot b) = f(a) \cdot f(b)$$
 
 ## 연습문제
 
-  - [SPOJ - COMDIV](https://www.spoj.com/problems/COMDIV/)
-  - [SPOJ - DIVSUM](https://www.spoj.com/problems/DIVSUM/)
-  - [SPOJ - DIVSUM2](https://www.spoj.com/problems/DIVSUM2/)
+- [SPOJ - COMDIV](https://www.spoj.com/problems/COMDIV/)
+- [SPOJ - DIVSUM](https://www.spoj.com/problems/DIVSUM/)
+- [SPOJ - DIVSUM2](https://www.spoj.com/problems/DIVSUM2/)

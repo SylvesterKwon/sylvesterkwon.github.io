@@ -7,8 +7,8 @@ tags: e-maxx-kor, algebra
 
 > 본 포스트는 [e-maxx.ru/algo](http://e-maxx.ru/algo/) 의 영문 번역본인 [cp-algorithms (e-maxx-eng)](https://cp-algorithms.com/index.html) 를 한국어로 번역한 것입니다. e-maxx 포스트의 저자는 [иванов максим](https://e-maxx.ru/about.php) 이며, cp-algorithms 포스트의 기여자는 [여기서](https://github.com/e-maxx-eng/e-maxx-eng/commits/master/src/algebra/binary-exp.md) 확인하실 수 있습니다. 본 포스트는 CC-BY-SA-4.0 License를 따릅니다.
 
-
 <!--?title Binary Exponentiation-->
+
 # Binary Exponentiation
 
 Binary exponentiation (또는 exponentiation by squaring)은 $a^n$ 을 $O(\log n)$ 번의 곱셈만으로 계산할 수 있게 해주는 트릭이다 (나이브한 접근으로는 $O(n)$ 번의 곱셈이 필요하다).
@@ -21,7 +21,7 @@ $$(X \cdot Y) \cdot Z = X \cdot (Y \cdot Z)$$
 
 ## Algorithm
 
-$a$ 를 $n$ 제곱한다는 것을 나이브하게 풀어 쓰면 $a$ 를 $n - 1$ 번 곱하는 것으로 표현된다: 
+$a$ 를 $n$ 제곱한다는 것을 나이브하게 풀어 쓰면 $a$ 를 $n - 1$ 번 곱하는 것으로 표현된다:
 $a^{n} = a \cdot a \cdot \ldots \cdot a$. 그러나 이런 접근은 큰 $a$ 나 $n$ 에 대해서는 그리 실용적이지 못하다.
 
 $a^{b+c} = a^b \cdot a^c$ and $a^{2b} = a^b \cdot a^b = (a^b)^2$.
@@ -35,25 +35,29 @@ $n$ 은 이진법으로 나타내면 정확히 $\lfloor \log_2 n \rfloor + 1$ �
 
 그래서 위의 거듭제곱 수열의 값을 어떻게 빠르게 구하는지만 알면 되는데, 다행히도 해당 수열의 원소는 그 이전 원소의 제곱이기 때문에 쉽게 구할 수 있다.
 
-$$\begin{align*}
-3^1 &= 3 \\\\
-3^2 &= \left(3^1\right)^2 = 3^2 = 9 \\\\
-3^4 &= \left(3^2\right)^2 = 9^2 = 81 \\\\
+$$
+\begin{align*}
+3^1 &= 3 \\
+3^2 &= \left(3^1\right)^2 = 3^2 = 9 \\
+3^4 &= \left(3^2\right)^2 = 9^2 = 81 \\
 3^8 &= \left(3^4\right)^2 = 81^2 = 6561
-\end{align*}$$
+\end{align*}
+$$
 
 그래서 $3^{13}$ 에 대한 답을 구해보면, 위 수열의 세가지 원소만 곱해주면 된다. ($3^2$ 는 $n$ 에서 해당하는 비트가 켜져있지 않기 때문에 곱하지 않는다.):
 $3^{13} = 6561 \cdot 81 \cdot 3 = 1594323$
 
 알고리즘의 최종 시간 복잡도는 $O(\log n)$ 이다: $a$ 의 $\log n$ 거듭제곱을 계산해야 하고, 그 다음엔 최종 답을 구하기 위해서는 최대 $\log n$ 번의 곱셈을 해야 되기 때문이다.
 
-다음의 재귀적인 접근은 같은 아이디어를 나타낸다: 
+다음의 재귀적인 접근은 같은 아이디어를 나타낸다:
 
-$$a^n = \begin{cases}
-1 &\text{if } n == 0 \\\\
-\left(a^{\frac{n}{2}}\right)^2 &\text{if } n > 0 \text{ and } n \text{ even}\\\\
+$$
+a^n = \begin{cases}
+1 &\text{if } n == 0 \\
+\left(a^{\frac{n}{2}}\right)^2 &\text{if } n > 0 \text{ and } n \text{ even}\\
 \left(a^{\frac{n - 1}{2}}\right)^2 \cdot a &\text{if } n > 0 \text{ and } n \text{ odd}
-\end{cases}$$
+\end{cases}
+$$
 
 ## 구현
 
@@ -133,60 +137,71 @@ long long binpow(long long a, long long b, long long m) {
 
 **해답:** 변환 유형에 따라 좌표가 어떻게 바뀌는지를 살펴보자:
 
-* 쉬프트 변환: 각 좌표에 서로 다른 상수를 더한다.
-* 크기 변환: 각 좌표에 서로 다른 상수를 곱한다.
-* 회전 변환: 이 변환은 조금 더 복잡하지만 (여기서 자세히 다루지는 않을 것이다), 새로운 좌표는 여전히 이전의 좌표를 선형결합한 것으로 나타낼 수 있다.
+- 쉬프트 변환: 각 좌표에 서로 다른 상수를 더한다.
+- 크기 변환: 각 좌표에 서로 다른 상수를 곱한다.
+- 회전 변환: 이 변환은 조금 더 복잡하지만 (여기서 자세히 다루지는 않을 것이다), 새로운 좌표는 여전히 이전의 좌표를 선형결합한 것으로 나타낼 수 있다.
 
 각각의 변환은 좌표의 선형 연산을 통해 나타내질 수 있는 것을 확인할 수 있다. 따라서 변환은 $4 \times 4$ 의 행렬로 나타내질 수 있다:
 
-$$\begin{pmatrix}
-a_{11} & a_ {12} & a_ {13} & a_ {14} \\\
-a_{21} & a_ {22} & a_ {23} & a_ {24} \\\
-a_{31} & a_ {32} & a_ {33} & a_ {34} \\\
-a_{41} & a_ {42} & a_ {43} & a_ {44}
-\end{pmatrix}$$
-
-이전 좌표와 단위에 해당하는 벡터에 변환 행렬을 곱하면 새로운 좌표와 단위에 해당하는 벡터를 얻을 수 있다:
-
-$$\begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
+$$
 \begin{pmatrix}
 a_{11} & a_ {12} & a_ {13} & a_ {14} \\\
 a_{21} & a_ {22} & a_ {23} & a_ {24} \\\
 a_{31} & a_ {32} & a_ {33} & a_ {34} \\\
 a_{41} & a_ {42} & a_ {43} & a_ {44}
 \end{pmatrix}
- = \begin{pmatrix} x' & y' & z' & 1 \end{pmatrix}$$
+$$
+
+이전 좌표와 단위에 해당하는 벡터에 변환 행렬을 곱하면 새로운 좌표와 단위에 해당하는 벡터를 얻을 수 있다:
+
+$$
+\begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
+\begin{pmatrix}
+a_{11} & a_ {12} & a_ {13} & a_ {14} \\\
+a_{21} & a_ {22} & a_ {23} & a_ {24} \\\
+a_{31} & a_ {32} & a_ {33} & a_ {34} \\\
+a_{41} & a_ {42} & a_ {43} & a_ {44}
+\end{pmatrix}
+ = \begin{pmatrix} x' & y' & z' & 1 \end{pmatrix}
+$$
 
 (왜 가상의 4번째 좌표가 필요한지를 궁금하다면: 4번째 좌표 없이는 쉬프트 변환을 구현할 수 없었을 것이다. 쉬프트 변환은 좌표에 상수를 더해야 하는데, 가상의 좌표가 없으면 좌표에 오로지 선형 결합만 적용할 수 있기 때문에, 상수를 더할 수 없다.)
 
 아래는 변환이 어떻게 행렬로 나타내지는 지에 대한 예시이다:
 
-* 쉬프트 변환: $x$ 좌표를 $5$, $y$ 좌표를 $7$, 그리고 $z$ 좌표를 $9$ 만큼 쉬프트 했을 때.
-$$\begin{pmatrix}
-1 & 0 & 0 & 0 \\\
-0 & 1 & 0 & 0 \\\
-0 & 0 & 1 & 0 \\\
-5 & 7 & 9 & 1
-\end{pmatrix}$$
+- 쉬프트 변환: $x$ 좌표를 $5$, $y$ 좌표를 $7$, 그리고 $z$ 좌표를 $9$ 만큼 쉬프트 했을 때.
 
-* 크기 변환: $x$ 좌표를 $10$ 만큼, 그리고 $y$ 와 $z$ 좌표를 $5$ 만큼 스케일 했을 때.
-$$\begin{pmatrix}
-10 & 0 & 0 & 0 \\\
-0 & 5 & 0 & 0 \\\
-0 & 0 & 5 & 0 \\\
-0 & 0 & 0 & 1
-\end{pmatrix}$$
+  $$
+  \begin{pmatrix}
+  1 & 0 & 0 & 0 \\\
+  0 & 1 & 0 & 0 \\\
+  0 & 0 & 1 & 0 \\\
+  5 & 7 & 9 & 1
+  \end{pmatrix}
+  $$
 
-* 회전 변환: 오른손의 규칙 (반시계 방향)에 따라 $x$ 축을 $\theta$ 도 만큼 회전시켰을 때.
-$$\begin{pmatrix}
-1 & 0 & 0 & 0 \\\
-0 & \cos \theta & -\sin \theta & 0 \\\
-0 & \sin \theta & \cos \theta & 0 \\\
-0 & 0 & 0 & 1
-\end{pmatrix}$$
+- 크기 변환: $x$ 좌표를 $10$ 만큼, 그리고 $y$ 와 $z$ 좌표를 $5$ 만큼 스케일 했을 때.
+
+  $$
+  \begin{pmatrix}
+  10 & 0 & 0 & 0 \\\
+  0 & 5 & 0 & 0 \\\
+  0 & 0 & 5 & 0 \\\
+  0 & 0 & 0 & 1
+  \end{pmatrix}
+  $$
+
+- 회전 변환: 오른손의 규칙 (반시계 방향)에 따라 $x$ 축을 $\theta$ 도 만큼 회전시켰을 때.
+  $$
+  \begin{pmatrix}
+  1 & 0 & 0 & 0 \\\
+  0 & \cos \theta & -\sin \theta & 0 \\\
+  0 & \sin \theta & \cos \theta & 0 \\\
+  0 & 0 & 0 & 1
+  \end{pmatrix}
+  $$
 
 이제 모든 변환이 행렬로 나타졌기 때문에 일련의 변환들은 해당 행렬들의 곱으로 나타내질 수 있다. 그리고 $k$ 만큼의 반복을 나타내는 "루프" 연산은 행렬을 $k$ 거듭제곱한 것으로 나타낼 수 있다 (binary exponentiation 을 사용하면 $O(\log{k})$ 에 계산할 수 있다). 이러한 방법으로, 모든 변환들을 나타내는 행렬을 계산을 $O(m \log{k})$ 안에 수행할 수 있다. 그리고 이것을 $n$ 개의 점에 적용하려면 $O(n)$ 의 시간을 소요하고, 전체 시간 복잡도는 $O(n + m \log{k})$ 가 된다.
-
 
 ### 그래프에서 길이가 $k$ 인 경로 개수 찾기
 
@@ -205,21 +220,23 @@ $$\begin{pmatrix}
 
 **해답:** 위에서 언급한 2진수 표현 알고리즘을 사용하고 곱셈 대신 덧셈을 사용하기만 하면 된다. 두 수의 곱을 $O (\log m)$ 번의 덧셈과 2로 곱하는 연산으로 "확장"시킨 것이라고 할 수 있다 (본질적으로는 덧셈인 것이다).
 
-$$a \cdot b = \begin{cases}
-0 &\text{if }a = 0 \\\\
-2 \cdot \frac{a}{2} \cdot b &\text{if }a > 0 \text{ and }a \text{ even} \\\\
+$$
+a \cdot b = \begin{cases}
+0 &\text{if }a = 0 \\
+2 \cdot \frac{a}{2} \cdot b &\text{if }a > 0 \text{ and }a \text{ even} \\
 2 \cdot \frac{a-1}{2} \cdot b + b &\text{if }a > 0 \text{ and }a \text{ odd}
-\end{cases}$$
+\end{cases}
+$$
 
 **참고:** 이 문제는 부동소수점을 이용한 다른 방법으로도 풀 수 있다. 우선 부동소수점을 사용하여 식 $\frac{a \cdot b}{m}$ 을 계산한 다음 unsigned int $q$ 로 캐스팅 한다. $a \cdot b$ 에서 unsigned int 연산을 사용하여 $q \cdot m$ 를 뺀 후 모듈로 $m$ 을 하여 답을 구하면 된다. 이 솔루션은 신뢰성이 없어 보이지만 아주 빠르게 동작하고 구현하기도 매우 쉽다. 더 자세한 정보는 [이곳](https://cs.stackexchange.com/questions/77016/modular-multiplication) 에서 확인할 수 있다.
 
 ## 연습 문제
 
-* [UVa 1230 - MODEX](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3671)
-* [UVa 374 - Big Mod](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=310)
-* [UVa 11029 - Leading and Trailing](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1970)
-* [Codeforces - Parking Lot](http://codeforces.com/problemset/problem/630/I)
-* [SPOJ - The last digit](http://www.spoj.com/problems/LASTDIG/)
-* [SPOJ - Locker](http://www.spoj.com/problems/LOCKER/)
-* [LA - 3722 Jewel-eating Monsters](https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1723)
-* [SPOJ - Just add it](http://www.spoj.com/problems/ZSUM/)
+- [UVa 1230 - MODEX](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3671)
+- [UVa 374 - Big Mod](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=310)
+- [UVa 11029 - Leading and Trailing](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1970)
+- [Codeforces - Parking Lot](http://codeforces.com/problemset/problem/630/I)
+- [SPOJ - The last digit](http://www.spoj.com/problems/LASTDIG/)
+- [SPOJ - Locker](http://www.spoj.com/problems/LOCKER/)
+- [LA - 3722 Jewel-eating Monsters](https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1723)
+- [SPOJ - Just add it](http://www.spoj.com/problems/ZSUM/)
