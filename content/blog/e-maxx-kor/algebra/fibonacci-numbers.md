@@ -21,23 +21,23 @@ $$0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
 
 피보나치 수열은 많은 흥미로운 법칙들을 가지고 있다. 다음은 그중 몇가지이다:
 
-* 카시니 항등식 (Cassini's identity):
+- 카시니 항등식 (Cassini's identity):
   $$F_{n-1} F_{n+1} - F_n^2 = (-1)^n$$
 
-* "덧셈" 규칙:
+- "덧셈" 규칙:
   $$F_{n+k} = F_k F_{n+1} + F_{k-1} F_n$$
 
-* 이전의 규칙에서 $k = n$ 일 때:
+- 이전의 규칙에서 $k = n$ 일 때:
   $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
-* 위를 활용하면 음이 아닌 아무 정수 $k$ 에 대하여,  $F_{nk}$ 가 $F_n$ 의 배수임을 귀납법을 사용하여 보일 수 있다.
+- 위를 활용하면 음이 아닌 아무 정수 $k$ 에 대하여, $F_{nk}$ 가 $F_n$ 의 배수임을 귀납법을 사용하여 보일 수 있다.
 
-* 그 역도 마찬가지로 성립한다: 만약 $F_m$ 이 $F_n$ 의 배수라면, $m$ 은 $n$ 의 배수이다.
+- 그 역도 마찬가지로 성립한다: 만약 $F_m$ 이 $F_n$ 의 배수라면, $m$ 은 $n$ 의 배수이다.
 
-* 최소공배수 항등식:
+- 최소공배수 항등식:
   $$GCD(F_m, F_n) = F_{GCD(m, n)}$$
 
-* 피보나치 수들은 유클리드 호제법에 대한 최악의 케이스이다. ([라메의 정리 (Lamé's theorem)](./euclid-algorithm.html) 참조)
+- 피보나치 수들은 유클리드 호제법에 대한 최악의 케이스이다. ([라메의 정리 (Lamé's theorem)](./euclid-algorithm.html) 참조)
 
 ## 피보나치 부호화 (Fibonacci Coding)
 
@@ -47,19 +47,21 @@ $$N = F_{k_1} + F_{k_2} + \ldots + F_{k_r}$$
 
 단, $k_1 \ge k_2 + 2,\ k_2 \ge k_3 + 2,\  \ldots,\  k_r \ge 2$ 를 만족해야 한다 (즉, 이 표현은 두개의 연속적인 피보나치 수들을 사용할 수 없다).
 
-따라서 어떤 숫자든 피보나치 부호화를 사용하여 고유하게 인코딩할 수 있다. 
-그리고 이 표현은 이 표현에 $F_{i+2}$ 이 사용되었다면 $d_i$ 가 $1$ 인 이진부호어 $d_0 d_1 d_2 \dots d_s 1$ 로 나타낼 수 있다. 
-그리고 부호어의 끝을 나타내기 위하여 부호어의 끝에 $1$ 이 추가될 것이다. 
-이것이 두개의 연속된 켜져있는 비트가 허용되는 유일한 경우임을 주목하라. 
+따라서 어떤 숫자든 피보나치 부호화를 사용하여 고유하게 인코딩할 수 있다.
+그리고 이 표현은 이 표현에 $F_{i+2}$ 이 사용되었다면 $d_i$ 가 $1$ 인 이진부호어 $d_0 d_1 d_2 \dots d_s 1$ 로 나타낼 수 있다.
+그리고 부호어의 끝을 나타내기 위하여 부호어의 끝에 $1$ 이 추가될 것이다.
+이것이 두개의 연속된 켜져있는 비트가 허용되는 유일한 경우임을 주목하라.
 
-$$\begin{eqnarray}
-1 &=& 1 &=& F_2 &=& (11)_F \\\
-2 &=& 2 &=& F_3 &=& (011)_F \\\
-6 &=& 5 + 1 &=& F_5 + F_2 &=& (10011)_F \\\
-8 &=& 8 &=& F_6 &=& (000011)_F \\\
-9 &=& 8 + 1 &=& F_6 + F_2 &=& (100011)_F \\\
+$$
+\begin{align}
+1 &=& 1 &=& F_2 &=& (11)_F \\
+2 &=& 2 &=& F_3 &=& (011)_F \\
+6 &=& 5 + 1 &=& F_5 + F_2 &=& (10011)_F \\
+8 &=& 8 &=& F_6 &=& (000011)_F \\
+9 &=& 8 + 1 &=& F_6 + F_2 &=& (100011)_F \\
 19 &=& 13 + 5 + 1 &=& F_7 + F_5 + F_2 &=& (1001011)_F
-\end{eqnarray}$$
+\end{align}
+$$
 
 정수 $n$ 을 인코딩하는 것은 간단한 그리디 알고리즘으로 해결할 수 있다:
 
@@ -85,7 +87,7 @@ $$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{
 
 이 공식은 귀납을 사용하면 쉽게 증명할 수 있지만, 생성 함수의 개념을 이용하거나 함수 방정식의 해를 구함으로써 연역할 수도 있다.
 
-위 공식의 두번째 항의 절대값은 항상 $1$ 보다 작고, 기하급수적으로 빠르게 감소함을 알 수 있다. 그래서 첫번째 항의 값이 "거의" $F_n$ 이라고 할 수 있다. 이것을 수학적으로 다음과 같이 표현할 수 있다: 
+위 공식의 두번째 항의 절대값은 항상 $1$ 보다 작고, 기하급수적으로 빠르게 감소함을 알 수 있다. 그래서 첫번째 항의 값이 "거의" $F_n$ 이라고 할 수 있다. 이것을 수학적으로 다음과 같이 표현할 수 있다:
 
 $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
 
@@ -108,10 +110,14 @@ $$\begin{pmatrix}F_n & F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 & F_1 \cr\e
 ### 고속배가 법 (Fast Doubling Method)
 
 위에서 소개했던 "덧셈" 규칙을 사용하면 다음과 같은 방정식을 얻을 수 있다:
-$$ \begin{array}{rll}
-                        F_{2k} &= F_k \left( 2F_{k+1} - F_{k} \right). \\\
+
+$$
+\begin{array}{rll}
+                        F_{2k} &= F_k \left( 2F_{k+1} - F_{k} \right). \\
                         F_{2k+1} &= F_{k+1}^2 + F_{k}^2.
-\end{array}$$
+\end{array}
+$$
+
 따라서 위의 두 방정식을 사용하면 피보나치는 다음 코드를 사용하여 쉽게 계산될 수 있다:
 
 ```cpp
@@ -128,6 +134,7 @@ pair<int, int> fib (int n) {
         return {c, d};
 }
 ```
+
 위의 코드는 $O(\log n)$ 시간에 $F_n$ 과 $F_{n+1}$ 를 쌍으로 반환한다.
 
 ## 모듈로 p 에서의 주기성
@@ -144,10 +151,9 @@ $$(F_1,\ F_2),\ (F_2,\ F_3),\ \ldots,\ (F_{p^2 + 1},\ F_{p^2 + 2})$$
 
 ## 연습 문제
 
-* [SPOJ - Euclid Algorithm Revisited](http://www.spoj.com/problems/MAIN74/)
-* [SPOJ - Fibonacci Sum](http://www.spoj.com/problems/FIBOSUM/)
-* [HackerRank - Is Fibo](https://www.hackerrank.com/contests/codesprint5/challenges/is-fibo/problem)
-* [Project Euler - Even Fibonacci numbers](https://www.hackerrank.com/contests/projecteuler/challenges/euler002/problem)
-* [DMOJ - Fibonacci Sequence](https://dmoj.ca/problem/fibonacci)
-* [DMOJ - Fibonacci Sequence (Harder)](https://dmoj.ca/problem/fibonacci2)
-
+- [SPOJ - Euclid Algorithm Revisited](http://www.spoj.com/problems/MAIN74/)
+- [SPOJ - Fibonacci Sum](http://www.spoj.com/problems/FIBOSUM/)
+- [HackerRank - Is Fibo](https://www.hackerrank.com/contests/codesprint5/challenges/is-fibo/problem)
+- [Project Euler - Even Fibonacci numbers](https://www.hackerrank.com/contests/projecteuler/challenges/euler002/problem)
+- [DMOJ - Fibonacci Sequence](https://dmoj.ca/problem/fibonacci)
+- [DMOJ - Fibonacci Sequence (Harder)](https://dmoj.ca/problem/fibonacci2)
