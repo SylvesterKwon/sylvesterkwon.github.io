@@ -3,8 +3,10 @@ title: APC 2023 Div. 1 참여 후기
 mathjax: true
 date: 2023-06-04 16:37:00
 tags: ps
-featuredImage: ../images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.png
+featuredImage: ../../../src/images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.png
 ---
+
+![APC 2023 logo](https://shake.codes/logo-apc.png)
 
 ## APC 2023
 [2023 아주대학교 프로그래밍 경시대회](https://shake.codes/apc)(이하 APC)에 휴학생의 신분으로 참여하였다. APC는 [경인지역 6개대학 연합 프로그래밍 경시대회](https://shake.codes/)(이하 shake!) 의 아주대학교 대표 선발전을 겸한다. 2020년부터 문제풀이를 시작했었는데, 코로나등등의 사유로 인해 이번 APC로 오프라인 대회를 처음으로 경험하게 되었다. 해결했던 문제들에 대한 해설과 개인적인 감상을 기록해두고 싶어 오랫만에 포스트를 작성한다.
@@ -17,7 +19,7 @@ featuredImage: ../images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.
 
 ## [B. 	Space-A](https://www.acmicpc.net/problem/28126)
 00:29, 1 제출 (first solve)
-
+=
 핵심 아이디어는 수행하는 명령의 종류와 횟수만 일치한다면 도착지점은 같다는 것과, 가능하다면 `X` 명령을 수행할 수 있는 만큼 그리디하게 수행하는 것이 좋다는 것이다.
 
 탐사하고 싶은 지점 $(x_i, y_i)$ 마다 `X` 명령을 가능한 수행할 수 있을 만큼 ($min(x_i, y_i, |X|)$, 여기서 $|X|$ 는 `X` 명령을 사용할 수 있는 횟수) 먼저 수행한다. 그 다음은 $(x_i, y_i)$ 까지 남은 X 방향의 거리, Y 방향의 거리와, 사용할 수 있는 최대 `R`, `U` 명령의 횟수의 대소비교를 통해 $(x_i, y_i)$ 지점에 도착할 수 있는지 고려하면 된다.
@@ -52,7 +54,7 @@ featuredImage: ../images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.
 - 어떻게 하면 ad hoc 에 잘해질 수 있을까...
 
 ## [E. 2022 APC가 어려웠다고요?](https://www.acmicpc.net/problem/28129)
-02:11
+02:11, 1 제출 (first solve)
 
 첫번째부터 $N$ 번째 문제까지 순차적으로 난이도를 책정할 때, $dp_{i,j}$ 를 $i$ 번째 문제의 난이도가 $j$ 인 경우의 수를 나타내는 DP 문제로 풀 수 있다. 아래는 점화식이다.
 
@@ -83,7 +85,7 @@ $$
 - AtCoder 나 USACO 와 같은 contest 에 꽤나 자주 출제되는 유형의 문제이다.
 
 ## [F. 슈넬치킨 랑데부](https://www.acmicpc.net/problem/28130)
-02:46
+02:46, 1 제출 (first solve)
 
 우선 랑데부를 할 수 없는 경우를 먼저 생각해보자
 1. 상혁과 선우가 체스판의 서로 다른 색 위에 서있을 때
@@ -100,12 +102,12 @@ BFS 를 사용하면 상혁이가 진행가능한 모든 칸에 대하여 상혁
 
 
 ## [G. K-지폐](https://www.acmicpc.net/problem/28131)
-03:13
+03:13, 1 제출 (first solve)
 
 하나의 도시를 하나의 정점으로 생각하지 말고, 현재 가지고 있는 거스름돈을 $K$ 로 나눈 나머지 별로 정점이 있다고 생각하자. $i$ 번째 도시를 방문했고 그 결과 현재 가지고 있는 거스름돈의 $mod K$ 가 $j$ 라면 정점 $v_{i,j}$ 라고 생각할 수 있는 것이다. 정점 갯수는 $NK$ 개이고, 다익스트라 알고리즘을 사용하면 $O((NK+M)log(NK))$ 에 시작정점 $v_{S,0}$ 에서 모든정점으로의 최단거리를 구할 수 있다. 정답은 시작정점에서 목적지인 $T$ 번째 도시에 도착함과 동시에 거스름돈이 $K$ 의 배수가 되는 $v_{T,0}$ 정점까지의 최단거리가 된다.
 
 ## [H. 기벡을 안배운다고?](https://www.acmicpc.net/problem/28132)
-03:36
+03:36, 2 제출 (first solve)
 
 $i$ 번째 벡터 $(u,v)$를 입력받았을 때 $i-1$ 번째 까지 입력받았던 모든 벡터에 대한 정보를 저장하고 있는 자료구조 (C++ 의 map) 을 사용하여 $i$ 번째 백터와 수직인 벡터의 갯수를 구하고 정답에 더해나갈 것이다.
 
@@ -134,8 +136,7 @@ C++ map 과 같은 적절한 자료구조를 사용하면 $(x,y)$ 꼴의 벡터�
 --:--
 
 # 총평
-![APC 2023 div1 scoreboard](../images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.png)
-
+![APC 2023 div1 scoreboard](../../../src/images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.png)
 
 사실 2020, 2021년도의 APC 에 참여하여 매우 실망스러운 성적을 거두었던 경험이 있어서, 이번에도 그러지 않을까라는 생각이 앞섰는데... 요상하게(?) 어짜피 안될거야라는 마음으로 편안하게 문제를 푼 덕분에 1등을 할 수 있었다.
 
