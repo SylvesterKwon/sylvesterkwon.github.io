@@ -5,8 +5,6 @@ date: 2021-12-18 15:12:00
 tags: e-maxx-kor
 ---
 
-<h1 data-toc="off">E-Maxx Algorithms 한국어 현지화 프로젝트</h1>
-
 *본 프로젝트는 [e-maxx.ru/algo](http://e-maxx.ru/algo/) 의 영문 번역본인 [cp-algorithms (e-maxx-eng)](https://cp-algorithms.com/index.html) 를 한국어로 번역한 것입니다. e-maxx 프로젝트의 저자는 [иванов максим](https://e-maxx.ru/about.php) 이며, cp-algorithms 프로젝트의 기여자는 [여기서](https://github.com/e-maxx-eng/e-maxx-eng) 확인하실 수 있습니다. 본 프로젝트는 CC-BY-SA-4.0 License를 따릅니다.*
 
 - 본 프로젝트의 오탈자 및 기타 오류에 대한 문의나 프로젝트 참여는 sylvester@ajou.ac.kr로 문의 주시길 바랍니다.
