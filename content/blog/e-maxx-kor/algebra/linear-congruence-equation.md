@@ -9,7 +9,9 @@ tags: e-maxx-kor, algebra
 
 선형 합동방정식은 다음과 같은 형태의 방정식이다.
 
-$$a \cdot x = b \pmod n$$
+$$
+a \cdot x = b \pmod n
+$$
 
 이때, $a, b, n$은 주어진 상수이고 $x$는 미지수이다.
 
@@ -19,7 +21,9 @@ $$a \cdot x = b \pmod n$$
 
 $a$와 $n$이 서로소인 ($\gcd(a, n) = 1$)인 간단한 경우를 먼저 생각하자. 이때 $a$의 [역원]](./module-inverse.html)을 찾을 수 있고, 이를 양변에 곱함으로써 **유일한** 해를 얻는다.
 
-$$x = b \cdot a ^ {- 1} \pmod n$$
+$$
+x = b \cdot a ^ {- 1} \pmod n
+$$
 
 $a$와 $n$이 서로소가 아닌 ($\gcd(a, n) \ne 1$) 경우를 생각하자. 이때 해는 존재하지 않을 수도 있다 (예를 들어 $2 \cdot x = 1 \pmod 4$는 해를 갖지 않는다). $g = \gcd(a, n)$을 $a$와 $n$의[최대공약수](./euclid-algorithm.html)라고 하자.
 
@@ -27,13 +31,17 @@ $b$가 $g$로 나누어 떨어지지 않으면 해는 존재하지 않는다. �
 
 $g$가 $b$를 나누면, 방정식의 양변을 $g$로 나누어 새로운 방정식을 얻는다:
 
-$$a^\prime \cdot x = b^\prime \pmod{n^\prime}$$
+$$
+a^\prime \cdot x = b^\prime \pmod{n^\prime}
+$$
 
 이때 $a^\prime$과 $n^\prime$은 서로소이고, 이 방정식에서 해를 구하는 방법은 이미 논하였다. $x$에 대한 해 $x^\prime$를 얻었다고 하자.
 
 $x^\prime$이 원래 방정식의 해가 된다는 것은 분명하지만, 이것은 **유일한 해가 아니다**. 원래 방정식이 해를 정확히 $g$개 가짐을 보일 수 있고, 이들은 다음과 같은 꼴이다:
 
-$$x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1$$
+$$
+x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1
+$$
 
 정리하면, 선형 합동방정식의 **해의 개수**는 $g = \gcd(a, n)$이거나 0이다. 
 
@@ -41,7 +49,9 @@ $$x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1$
 
 원래 선형 합동식을 다음 디오판토스 방정식으로 다시 쓸 수 있다:
 
-$$a \cdot x + n \cdot k = b$$
+$$
+a \cdot x + n \cdot k = b
+$$
 
 이때 $x$와 $k$는 미지수이다.
 

@@ -11,7 +11,9 @@ tags: e-maxx-kor, algebra
 
 정수 $a$의 [모듈로 곱셈 역원](http://en.wikipedia.org/wiki/Modular_multiplicative_inverse)은 어떤 모듈로 $m$에 대해 $a \cdot x$가 1과 합동이 되도록 하는 정수 $x$이다.
 형식적으로 쓰면, $a$의 모듈로 곱셈 역원은 다음 합동식을 만족하는 정수 $x$를 일컫는다:
-$$a \cdot x \equiv 1 \mod m.$$
+$$
+a \cdot x \equiv 1 \mod m.
+$$
 이러한 $x$를 $a^{-1}$으로 표기한다.
 
 모듈로 곱셈 역원은 존재하지 않을 수도 있다. 예를 들어, $m = 4$, $a = 2$인 경우, 모듈로 $m$에 대해 $x$에 어떤 값을 대입하더라도 합동식이 성립하지 않음을 알 수 있고, 따라서 위 합동식을 만족하는 정수 $a^{-1}$는 존재하지 않는다.
@@ -23,7 +25,9 @@ $$a \cdot x \equiv 1 \mod m.$$
 
 미지수 $x$, $y$에 대한 다음 방정식을 생각하자:
 
-$$a \cdot x + m \cdot y = 1$$
+$$
+a \cdot x + m \cdot y = 1
+$$
 
 이는 [이변수 일차 디오판토스 방정식](./algebra/linear-diophantine-equation.html)이다.
 링크된 글에 알 수 있듯이, $\gcd(a, m) = 1$인 경우 방정식은 해를 가지고, 이를 [확장 유클리드 알고리즘](http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm)을 통해 계산할 수 있다.
@@ -31,7 +35,9 @@ $\gcd(a, m) = 1$는 모듈로 역원이 존재하기 위한 조건이기도 하�
 
 양변에 모듈로 $m$을 취하면 $m \cdot y$는 사라지고 다음 합동식을 얻는다:
 
-$$a \cdot x \equiv 1 \mod m$$
+$$
+a \cdot x \equiv 1 \mod m
+$$
 
 따라서, $a$의 모듈로 역원은 $x$이다.
 
@@ -56,14 +62,18 @@ else {
 
 모듈로 역원을 찾는 다른 방법은 오일러 정리를 이용하는 것이다. $a$와 $m$인 경우 다음 합동식이 성립한다.
 
-$$a^{\phi (m)} \equiv 1 \mod m$$
+$$
+a^{\phi (m)} \equiv 1 \mod m
+$$
 
 $\phi$는 [오일러 피 함수](./algebra/phi-function.html)이다.
 $a$와 $m$가 서로소임은 모듈로 역원이 존재하기 위한 조건이다.
 
 $m$이 소수인 경우, 좀 더 간단한 [페르마의 소정리](http://en.wikipedia.org/wiki/Fermat's_little_theorem)가 된다:
 
-$$a^{m - 1} \equiv 1 \mod m$$
+$$
+a^{m - 1} \equiv 1 \mod m
+$$
 
 방정식의 양변에 $a^{-1}$를 곱하여 다음 사실을 관찰하자:
 
@@ -84,7 +94,9 @@ $O(m)$ 계산 복잡도를 갖는 알고리즘을 소개한다. $m$이 소수인
 
 $i$의 모듈로 역원을 $\text{inv}[i]$으로 표기하면, $i > 1$에 대해 다음 등식이 성립한다.
 
-$$\text{inv}[i] = - \left\lfloor \frac{m}{i} \right\rfloor \cdot \text{inv}[m \bmod i] \bmod m$$
+$$
+\text{inv}[i] = - \left\lfloor \frac{m}{i} \right\rfloor \cdot \text{inv}[m \bmod i] \bmod m
+$$
 
 따라서 구현은 아주 간단하다.
 
@@ -97,13 +109,21 @@ for(int i = 2; i < m; ++i)
 ### 증명
 
 다음을 관찰하자.
-$$m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i$$
+$$
+m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i
+$$
 양변에 모듈로 $m$을 취하여 다음 등식을 얻는다.
-$$m \bmod i \equiv - \left\lfloor \frac{m}{i} \right\rfloor \cdot i \mod m$$
+$$
+m \bmod i \equiv - \left\lfloor \frac{m}{i} \right\rfloor \cdot i \mod m
+$$
 양 변에 $i^{-1} \cdot (m \bmod i)^{-1}$를 곱하여 다음 등식을 얻는다.
-$$(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m$$
+$$
+(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m
+$$
 이를 간단하게 쓰면 다음과 같다.
-$$i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,$$
+$$
+i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,
+$$
 
 
 

@@ -11,31 +11,43 @@ tags: e-maxx-kor, algebra
 
 피보나치 수열은 다음과 같이 정의된다:
 
-$$F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$$
+$$
+F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}
+$$
 
 피보나치 수열 ([OEIS A000045](http://oeis.org/A000045))을 첫번째 원소부터 나열하면 다음과 같다:
 
-$$0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
+$$
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+$$
 
 ## 피보나치 수열의 법칙들
 
 피보나치 수열은 많은 흥미로운 법칙들을 가지고 있다. 다음은 그중 몇가지이다:
 
 - 카시니 항등식 (Cassini's identity):
-  $$F_{n-1} F_{n+1} - F_n^2 = (-1)^n$$
+  $$
+  F_{n-1} F_{n+1} - F_n^2 = (-1)^n
+  $$
 
 - "덧셈" 규칙:
-  $$F_{n+k} = F_k F_{n+1} + F_{k-1} F_n$$
+  $$
+  F_{n+k} = F_k F_{n+1} + F_{k-1} F_n
+  $$
 
 - 이전의 규칙에서 $k = n$ 일 때:
-  $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
+  $$
+  F_{2n} = F_n (F_{n+1} + F_{n-1})
+  $$
 
 - 위를 활용하면 음이 아닌 아무 정수 $k$ 에 대하여, $F_{nk}$ 가 $F_n$ 의 배수임을 귀납법을 사용하여 보일 수 있다.
 
 - 그 역도 마찬가지로 성립한다: 만약 $F_m$ 이 $F_n$ 의 배수라면, $m$ 은 $n$ 의 배수이다.
 
 - 최소공배수 항등식:
-  $$GCD(F_m, F_n) = F_{GCD(m, n)}$$
+  $$
+  GCD(F_m, F_n) = F_{GCD(m, n)}
+  $$
 
 - 피보나치 수들은 유클리드 호제법에 대한 최악의 케이스이다. ([라메의 정리 (Lamé's theorem)](./euclid-algorithm.html) 참조)
 
@@ -43,7 +55,9 @@ $$0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
 
 우리는 피보나치 수열을 사용하여 양의 정수를 이진 부호어 (binary code word) 로 인코딩할 수 있다. 제켄도르프의 정리 (Zeckendorf's theorem)에 따르면, 모든 자연수 $n$ 은 고유의 피보나치 수들의 합으로 나타내질 수 있다:
 
-$$N = F_{k_1} + F_{k_2} + \ldots + F_{k_r}$$
+$$
+N = F_{k_1} + F_{k_2} + \ldots + F_{k_r}
+$$
 
 단, $k_1 \ge k_2 + 2,\ k_2 \ge k_3 + 2,\  \ldots,\  k_r \ge 2$ 를 만족해야 한다 (즉, 이 표현은 두개의 연속적인 피보나치 수들을 사용할 수 없다).
 
@@ -83,13 +97,17 @@ $$
 
 "비네 공식 (Binet's formula)" 으로 알려진 공식이 있는데, 실은 드 무아브르 (de Moivre) 가 먼저 발견한 공식이다:
 
-$$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}$$
+$$
+F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}
+$$
 
 이 공식은 귀납을 사용하면 쉽게 증명할 수 있지만, 생성 함수의 개념을 이용하거나 함수 방정식의 해를 구함으로써 연역할 수도 있다.
 
 위 공식의 두번째 항의 절대값은 항상 $1$ 보다 작고, 기하급수적으로 빠르게 감소함을 알 수 있다. 그래서 첫번째 항의 값이 "거의" $F_n$ 이라고 할 수 있다. 이것을 수학적으로 다음과 같이 표현할 수 있다:
 
-$$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
+$$
+F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]
+$$
 
 여기서 대괄호는 가까운 정수로 반올림함을 의미한다.
 
@@ -99,11 +117,15 @@ $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
 
 다음 관계를 보이는 것은 쉽다:
 
-$$\begin{pmatrix}F_{n-1} & F_{n} \cr\end{pmatrix} = \begin{pmatrix}F_{n-2} & F_{n-1} \cr\end{pmatrix} \cdot \begin{pmatrix}0 & 1 \cr 1 & 1 \cr\end{pmatrix}$$
+$$
+\begin{pmatrix}F_{n-1} & F_{n} \cr\end{pmatrix} = \begin{pmatrix}F_{n-2} & F_{n-1} \cr\end{pmatrix} \cdot \begin{pmatrix}0 & 1 \cr 1 & 1 \cr\end{pmatrix}
+$$
 
 $P \equiv \begin{pmatrix}0 & 1 \cr 1 & 1 \cr\end{pmatrix}$ 라고 하면, 다음을 얻는다:
 
-$$\begin{pmatrix}F_n & F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 & F_1 \cr\end{pmatrix} \cdot P^n$$
+$$
+\begin{pmatrix}F_n & F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 & F_1 \cr\end{pmatrix} \cdot P^n
+$$
 
 그래서 $F_n$ 을 찾으려면, 행렬 $P$ 를 $n$ 거듭제곱 하면 된다. 이것은 $O(\log n)$ 에 할 수 있다 ([Binary exponentiation](./binary-exp.html) 참조).
 
@@ -143,7 +165,9 @@ pair<int, int> fib (int n) {
 
 모순을 통하여 수열의 주기성을 증명할 것이다. 모듈로 $p$ 에서의 피보나치 수열에서 처음부터 $p^2 + 1$ 개의 쌍에 대해 고려해보자:
 
-$$(F_1,\ F_2),\ (F_2,\ F_3),\ \ldots,\ (F_{p^2 + 1},\ F_{p^2 + 2})$$
+$$
+(F_1,\ F_2),\ (F_2,\ F_3),\ \ldots,\ (F_{p^2 + 1},\ F_{p^2 + 2})
+$$
 
 모듈러 $p$ 에서는 $p$ 개의 다른 나머지만이 존재할 수 있고, 이것이 쌍을 이루면 서로 다른 $p^2$ 개의 나머지쌍이 있으므로, 위의 쌍들 중 최소 두쌍이 서로 동일한 나머지를 가진다. 따라서 수열은 주기성을 가진다.
 

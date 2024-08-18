@@ -11,7 +11,9 @@ tags: e-maxx-kor, algebra
 
 선형 디오판토스 방정식 (변수가 2개인) 은 다음과 같은 일반적인 형태의 방정식이다:
 
-$$ax + by = c$$
+$$
+ax + by = c
+$$
 
 여기서 $a$, $b$, $c$ 는 이미 주어진 정수이고, $x$, $y$ 는 정수인 미지수이다.
 
@@ -30,18 +32,26 @@ $$ax + by = c$$
 
 미지수가 2개인 디오판토스 방정식의 한 해를 구할 때, [확장 유클리드 호제법](algebra/extended-euclid-algorithm.html) 을 사용할 수 있다. 우선, $a$ 와 $b$ 의 부호가 음이 아니라고 가정하자. $a$ 와 $b$ 에 대해서 확장 유클리드 호제법을 사용하면 두 수에 대한 최대공약수 $g$ 를 찾을 수 있고, 다음과 같은 두 수 $x_g$ 와 $y_g$ 도 구할 수 있다:
 
-$$a x_g + b y_g = g$$
+$$
+a x_g + b y_g = g
+$$
 
 만약 $c$ 가 $g = \gcd(a, b)$ 에 의해 나눠질 수 있다면 주어진 디오판토스 방정식은 해가 존재하고 그렇지 않은 경우는 해가 존재하지 않는다. 증명은 꽤 직관적인데, 두 수의 선형 결합은 그들의 공약수로 나눌 수 있기 때문이다.
 
 그렇다면 $c$ 가 $g$ 에 의해 나누어진다고 가정해보자, 그렇다면 다음을 얻을 수 있다:
 
-$$a \cdot x_g \cdot \frac{c}{g} + b \cdot y_g \cdot \frac{c}{g} = c$$
+$$
+a \cdot x_g \cdot \frac{c}{g} + b \cdot y_g \cdot \frac{c}{g} = c
+$$
 
 그러므로 다음은 디오판토스 방정식의 해들 중 하나라고 말할 수 있다:
 
-$$x_0 = x_g \cdot \frac{c}{g},$$
-$$y_0 = y_g \cdot \frac{c}{g}.$$
+$$
+x_0 = x_g \cdot \frac{c}{g},
+$$
+$$
+y_0 = y_g \cdot \frac{c}{g}.
+$$
 
 위의 아이디어는 $a$ 나 $b$ 가 음수이거나 둘다 음수이더라도 동작한다. 이런 경우, 필요할 때 $x_0$ 와 $y_0$ 의 부호를 적절히 변경해주기만 하면 된다.
 
@@ -81,16 +91,24 @@ bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
 
 $g = \gcd(a, b)$ 라고 하자, 그리고 다음을 만족하는 정수 $x_0, y_0$ 가 있다고 하자:
 
-$$a \cdot x_0 + b \cdot y_0 = c$$
+$$
+a \cdot x_0 + b \cdot y_0 = c
+$$
 
 $x_0$ 에 $b / g$ 를 더하고, $y_0$ 에 $a / g$ 를 빼도 등식은 여전히 성립할 것이다:
 
-$$a \cdot \left(x_0 + \frac{b}{g}\right) + b \cdot \left(y_0 - \frac{a}{g}\right) = a \cdot x_0 + b \cdot y_0 + a \cdot \frac{b}{g} - b \cdot \frac{a}{g} = c$$
+$$
+a \cdot \left(x_0 + \frac{b}{g}\right) + b \cdot \left(y_0 - \frac{a}{g}\right) = a \cdot x_0 + b \cdot y_0 + a \cdot \frac{b}{g} - b \cdot \frac{a}{g} = c
+$$
 
 자명하게도 위의 과정은 반복될 수 있고 , 주어진 디오판토스 방정식의 해들은 다음과 같이 나타낼 수 있다:
 
-$$x = x_0 + k \cdot \frac{b}{g}$$
-$$y = y_0 - k \cdot \frac{a}{g}$$
+$$
+x = x_0 + k \cdot \frac{b}{g}
+$$
+$$
+y = y_0 - k \cdot \frac{a}{g}
+$$
 
 게다가, 이것은 주어진 디오판토스 방정식의 모든 가능한 경우의 집합이다.
 
@@ -173,12 +191,18 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 
 마침내, 최소값을 찾기 위해 모든 해의 집합을 찾는 방법을 사용한다:
 
-$$x' = x + k \cdot \frac{b}{g},$$
-$$y' = y - k \cdot \frac{a}{g}.$$
+$$
+x' = x + k \cdot \frac{b}{g},
+$$
+$$
+y' = y - k \cdot \frac{a}{g}.
+$$
 
 $x + y$ 는 다음과 같이 변화한다:
 
-$$x' + y' = x + y + k \cdot \left(\frac{b}{g} - \frac{a}{g}\right) = x + y + k \cdot \frac{b-a}{g}$$
+$$
+x' + y' = x + y + k \cdot \left(\frac{b}{g} - \frac{a}{g}\right) = x + y + k \cdot \frac{b-a}{g}
+$$
 
 만약 $a < b$ 라면, 가능한 최소 $k$ 값을 선택해야할 것이다. 만약 $a > b$ 라면, 가능한 최대 $k$ 값을 선택해야할 것이다. 만약 $a = b$ 라면, 모든 해는 동일한 합 $x + y$ 를 가질 것이다.
 

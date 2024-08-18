@@ -41,7 +41,9 @@ _EXCELSIOR! 이텔릭체는 별표!_
 >
 > > 인용2
 
-$$ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} $$
+$$
+x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} 
+$$
 $ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} $
 
 $$

@@ -10,7 +10,9 @@ tags: e-maxx-kor, algebra
 # 최대공약수 계산을 위한 유클리드 호제법
 
 음이 아닌 두 정수 $a$ 와 $b$ 가 주어졌을 때, 두 수의 **최대공약수** (greatest common divisor, GCD), 즉 두 수의 약수이면서 가장 큰 수를 구해야한다. 이는 흔히 $\gcd(a, b)$ 로 표기된다. 수학적으로 이는 다음과 같이 정의된다:
-$$\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$$
+$$
+\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.
+$$
 (여기서 기호 "$\mid$" 는 약수를 나타낸다, 다시 말해, "$k \mid a$" 는 "$k$ 는 $a$ 의 약수" 임을 의미한다)
 
 만약 두 수중 하나가 0이고, 하나가 0이 아니면 두 수의 최대공약수는 정의에 의해서 두번째 수이다. 만약 두 수가 모두 0인 경우에는 최대공약수가 정의되어 있지 않지만 (임의의 모든 큰 숫자가 될 수 있다), 하지만 그것을 0으로 정의할 수 있다. 이것은 상황을 더 간단하게 만들어 주는데, 만약 두 수중 하나라도 0이라면 두 수의 최대공약수는 나머지 한 수이다.
@@ -23,7 +25,9 @@ $$\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$
 
 알고리즘은 아주 간단하다:
 
-$$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
+$$
+\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}
+$$
 
 ## 구현
 
@@ -67,13 +71,19 @@ int gcd (int a, int b) {
 $d = \gcd(a, b)$ 라고 하면, 정의에 의해서 $d\mid a$ 와 $d\mid b$ 이다.
 
 $a$ 를 $b$ 로 나눈 나머지를 다음과 같이 표시한다:
-$$a \bmod b = a - b \cdot \Bigl\lfloor\dfrac{a}{b}\Bigr\rfloor$$
+$$
+a \bmod b = a - b \cdot \Bigl\lfloor\dfrac{a}{b}\Bigr\rfloor
+$$
 
 이것으로 $d \mid (a \bmod b)$ 가 성립함을 알 수 있고, 다음과 같은 약수-배수 관계를 알 수 있다:
-$$\begin{cases}d \mid b,\\ d \mid (a \mod b)\end{cases}$$
+$$
+\begin{cases}d \mid b,\\ d \mid (a \mod b)\end{cases}
+$$
 
 어떤 세 숫자 $p$, $q$, $r$ 에 대하여, 만약 $p\mid q$ 이고, $p\mid r$ 이면 $p\mid \gcd(q, r)$ 이라는 사실을 이용할 것이다. 이것을 이 문제에 적용시키면, 다음을 얻을 수 있다:
-$$d = \gcd(a, b) \mid \gcd(b, a \mod b)$$
+$$
+d = \gcd(a, b) \mid \gcd(b, a \mod b)
+$$
 
 따라서 원래 식의 우변을 좌변으로 나누면 나누어 떨어짐을 보였다. 나머지 절반의 증명도 비슷하게 할 수 있다.
 
@@ -90,7 +100,9 @@ $$d = \gcd(a, b) \mid \gcd(b, a \mod b)$$
 ## 최소공배수
 
 최소공배수 (least common multiple, LCM) 를 계산하는 문제는 다음과 같은 간단한 공식을 사용하여 최대공약수 계산 문제로 축소됨을 보일 수 있다:
-$$\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}$$
+$$
+\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}
+$$
 
 따라서 최소공배수도 유클리드 호제법을 사용하여 같은 시간 복잡도에 계산할 수 있다:
 

@@ -26,23 +26,20 @@ $$
 오일러 피 함수의 다음 성질들을 이용하여 모든 수에 대해 오일러 피 함수를 계산할 수 있다.
 
 - $p$가 소수일 때, 모든 $1 \le q < p$에 대해 $\gcd(p, q) = 1$이다. 따라서 다음 등식을 얻는다:
-  $$\phi (p) = p - 1.$$
+  $$
+  \phi (p) = p - 1.
+  $$
 
 - $p$가 소수이고 $k \ge 1$일 때, $1$부터 $p^k$까지의 수 중 정확히 $p^k / p$개가 $p$로 나누어 떨어진다. 따라서 다음 등식을 얻는다:
-  $$\phi(p^k) = p^k - p^{k-1}.$$
-
-<ul><li>
-    $a$, $b$가 서로소일 때, 다음 등식을 얻는다:
-    $$\phi(a b) = \phi(a) \cdot \phi(b).$$
+  $$
+  \phi(p^k) = p^k - p^{k-1}.
+  $$
+- $a$, $b$가 서로소일 때, 다음 등식을 얻는다:
+    $$
+    \phi(a b) = \phi(a) \cdot \phi(b).
+    $$
     이 관계는 자명해 보이지 않는다. 이 결과는 <a href="./chinese-remainder-theorem.html">중국인 나머지 정리</a>로부터 알 수 있는데, 중국인 나머지 정리에 의해 각 $0 \le x < a$, $0 \le y < b$에 대해 $z \equiv x \pmod{a}$, $z \equiv y \pmod{b}$를 만족하는 유일한 $0 \le z < a b$가 존재한다. $z$가 $a b$과 서로소임은 $x$가 $a$와 서로소이고 $y$가 $b$와 서로소임과 동치이다. 따라서 $a b$와 서로소인 정수의 개수는 $\varphi(a)$, $\varphi(b)$의 곱과 같다.
-</li>
-
-<li>
-서로소가 아닌 두 수 $a$, $b$에 대해서, 등식
-$$\phi(ab) = \phi(a) \cdot \phi(b) \cdot \dfrac{d}{\phi(d)}$$
-이 성립한다. 이때, $d = \gcd(a, b)$이다.
-</li>
-</ul>
+- 서로소가 아닌 두 수 $a$, $b$에 대해서, 등식 $\phi(ab) = \phi(a) \cdot \phi(b) \cdot \dfrac{d}{\phi(d)}$ 이 성립한다. 이때, $d = \gcd(a, b)$이다.
 
 처음 세 성질과 $n$의 소인수분해를 이용하여 $\phi(n)$를 계산할 수 있다. $n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{a_k}$, $p_i$는 각각 소수일 때, 다음 등식이 성립한다.
 
@@ -103,7 +100,9 @@ void phi_1_to_n(int n) {
 
 이 흥미로운 성질은 가우스에 의해 확립되었다:
 
-$$ \sum\_{d|n} \phi{(d)} = n$$
+$$
+\sum\_{d|n} \phi{(d)} = n
+$$
 
 합은 $n$의 모든 약수 $d$에 대해 더한 것이다.
 
@@ -130,21 +129,29 @@ void phi_1_to_n(int n) {
 ## 오일러 정리에서의 응용
 
 오일러 피 함수의 가장 유명하고 중요한 성질은 **오일러 정리**에서 나타난다. $a$와 $m$이 서로소일때, 다음 등식이 성립한다.
-$$a^{\phi(m)} \equiv 1 \pmod m$$
+$$
+a^{\phi(m)} \equiv 1 \pmod m
+$$
 
 $m$이 소수인 경우, 오일러 정리는 **페르마의 소정리**가 된다:
-$$a^{m - 1} \equiv 1 \pmod m$$
+$$
+a^{m - 1} \equiv 1 \pmod m
+$$
 
 오일러 정리와 오일러 피 함수는 [잉여 역수](./algebra/module-inverse.html)를 계산하는 데 활용되는 등 실전에서 자주 등장한다.
 
 직접적인 결과로써 다음 합동식이 성립한다:
-$$a^n \equiv a^{n \bmod \phi(m)} \pmod m$$
+$$
+a^n \equiv a^{n \bmod \phi(m)} \pmod m
+$$
 이 합동식을 통해 아주 큰 $n$에 대해 $x^n \bmod m$을 계산할 수 있다. 특히 $n$이 다른 계산의 결과인 경우, $n$을 법 $\phi(m)$에 대해 계산하여도 된다.
 
 ## 일반화
 
 서로소가 아닌 $x$, $m$에 대해 $x^n \bmod m$을 효율적으로 계산하는 마지막 합동식의 잘 알려지지 않은 변형이 있다. 임의의 $x, m$와 $n \geq \log_2 m$에 대해 다음 합동식이 성립한다.
-$$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m$$
+$$
+x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m
+$$
 
 증명:
 
@@ -166,11 +173,15 @@ $$
 $b = cd + r$, $r < c$일 때, $ab = acd + ar$, $ar < ac$임을 관찰하자.
 
 $x$와 $\frac{m}{a}$는 서로소이므로, 오일러 정리를 사용하여 다음 공식을 얻는다.
-$$x^n \bmod m = x^k\left(x^{n-k \bmod \phi(\frac{m}{a})} \bmod \frac{m}{a}\right)\bmod m.$$
+$$
+x^n \bmod m = x^k\left(x^{n-k \bmod \phi(\frac{m}{a})} \bmod \frac{m}{a}\right)\bmod m.
+$$
 $k$가 아주 작으므로 (사실 $k \le \log_2 m$이다) 이는 효율적으로 계산할 수 있다.
 
 이 공식은 적용하기 어렵지만, $x^n \bmod m$의 행동을 분석하기 위해 사용할 수 있다. 거듭제곱으로 이루어진 수열 $(x^1 \bmod m, x^2 \bmod m, x^3 \bmod m, \dots)$은 첫 $k$개의 항 이후 길이 $\phi\left(\frac{m}{a}\right)$인 순환에 진입한다. $a$, $\frac{m}{a}$는 서로소이므로 $\phi(a) \cdot \phi\left(\frac{m}{a}\right) = \phi(m)$를 얻는다. 특히, $\phi(m)$은 $\phi\left(\frac{m}{a}\right)$으로 나누어 떨어진다. 따라서 이 순환이 길이 $\phi(m)$를 갖는다고 말할 수도 있다. $\phi(m) \ge \log_2 m \ge k$으로부터, 목표했던 더욱 간단한 공식을 얻는다:
-$$ x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.$$
+$$
+x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.
+$$
 
 ## 연습문제
 

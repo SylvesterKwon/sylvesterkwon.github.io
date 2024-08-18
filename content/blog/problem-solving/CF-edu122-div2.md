@@ -20,7 +20,9 @@ tags: Codeforces
 
 캐릭터와 몬스터가 각각 "버틸 수 있는 턴" 수를 계산하자. 캐릭터가 선공을 하므로, $(캐릭터가 버틸 수 있는 턴) \geq (몬스터가 버틸 수 있는 턴)$ 이 성립한다면 `YES`, 그 반대의 경우에는 `NO` 를 출력하면 된다. 식을 구체화 한다면 다음과 같다:
 
-$$\left \lceil \frac{h_C+ax}{d_M} \right \rceil \geq \left \lceil \frac{h_M}{d_C+w(k-x)} \right \rceil$$
+$$
+\left \lceil \frac{h_C+ax}{d_M} \right \rceil \geq \left \lceil \frac{h_M}{d_C+w(k-x)} \right \rceil
+$$
 
 (위 식에서 $x$ 는 armor upgrade에 사용된 동전의 갯수)
 
@@ -28,7 +30,9 @@ $$\left \lceil \frac{h_C+ax}{d_M} \right \rceil \geq \left \lceil \frac{h_M}{d_C
 
 우선 각 $i$ 마다 $a_i=b_i$ 를 만들기 위한 비용을 $w_i$ 라고 계산한다. 이는 1차원 DP로 $O(n^2)$ 에 전처리할 수 있다. $dpw_i$ 가 수열에 있는 초기 수 $1$ 을 $i$ 로 만드는데 사용되는 최소 연산 횟수라고 하자, $1 \leq i \leq 1000, 1 \leq j \leq i$ 를 만족하는 모든 $i, j$에 대하여 다음을 수행하면 된다:
 
-$$dpw_{i+\lfloor i/j \rfloor}=\min(dpw_{i+\lfloor i/j \rfloor}, dpw_i+1)$$
+$$
+dpw_{i+\lfloor i/j \rfloor}=\min(dpw_{i+\lfloor i/j \rfloor}, dpw_i+1)
+$$
 
 이젠 문제가 무게가 $w$ 이고 가치가 $c$인 냅색문제로 축소되어 $O(nk)$에 해결할 수 있는데, 그러기엔 $k$ 가 다소 커보인다. 여기서 한가지 관찰할 수 있는 재밌는 점은, $b$ 의 범위가 $1000$ 이하이기 때문에 모든 $b_i$에 대해서 $dpw_{b_i}$ 는 12 이하라는 것을 관찰할 수 있다 (로그스케일이라고도 말할 수 있겠다). 최악의 경우에도 $12n$ 이상의 연산을 하는 경우가 없기 때문에 사실은 $O(n^2)$ 의 시간복잡도를 가지고, 이는 문제 해결에 충분하다.
 

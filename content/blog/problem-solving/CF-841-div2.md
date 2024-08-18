@@ -1,11 +1,12 @@
 ---
 title: Codeforces Round 841 (Div. 2) and Divide by Zero 2022
-mathjax: true
 date: 2022-12-30 14:00:00
 tags: Codeforces
 ---
 
-## [A. Joey Takes Money](https://codeforces.com/contest/1731/problem/A)
+## 문제 풀이
+
+### [A. Joey Takes Money](https://codeforces.com/contest/1731/problem/A)
 $1 \leq A, B$ 인 $A, B$ 에 대하여 항상 $A+B \leq A*B$ 가 성립한다는 성질을 이용하여, greedy 하게 수열 $a$ 에서 한개의 수를 제외한 나머지 수들을 모두 1로 만들어 주면 된다. $a_1$ 을 제외한 모든 수를 1로 만든다고 가정해보자. 그렇다면 연산을 마친 수열 $a\prime$ 는 다음과 같은 모습일 것이다.
 
 $$
@@ -16,19 +17,23 @@ $$
 
 따라서 문제에서 요구하는 대로 연산을 마친 수열의 합 $\Sigma a\prime$ 에 2022를 곱한 값을 출력하면 된다.
 
-## [B. Kill Demodogs](https://codeforces.com/contest/1731/problem/B)
+### [B. Kill Demodogs](https://codeforces.com/contest/1731/problem/B)
 우선 다음과 같이 지그재그로 움직이는 것이 최적해라는 발상이 필요하다 (가로, 세로 변의 길이합이 같은 직사각형 집합에서 정사각형의 넓이가 가장 넓다는 직관을 사용하였다):
 
-$$ (1,1), (1,2), (2,2), ..., (n-1,n),(n,n) $$
+$$
+(1,1), (1,2), (2,2), ..., (n-1,n),(n,n)
+$$
 
 위처럼 경로를 지나면서 지나온 칸의 수 (Demodogs 의 수)의 합을 수식으로 나타내면 다음과 같다.
 
-$$ \sum_{i=1}^{n} i^2 + \sum_{i=1}^{n-1} i*(i+1) $$
+$$
+\sum_{i=1}^{n} i^2 + \sum_{i=1}^{n-1} i*(i+1)
+$$
 
 따라서 위 식을 연산한 결과에 2022를 곱하면 정답이 된다. 연산 과정에서 필요한 6으로 나누는 연산은 모듈러 역원을 이용하거나 2022가 6의 배수라는 점을 활용하면 된다 ;)
 
 
-## [C. Even Subarrays](https://codeforces.com/contest/1731/problem/C)
+### [C. Even Subarrays](https://codeforces.com/contest/1731/problem/C)
 짝수개의 약수를 가지는 수는 완전제곱수가 아닌 수라는 사실을 상기하자. 전체 경우의 수에서 완전제곱수인 경우를 구하고 제외하는 방식으로 문제를 해결할 것이다.
 
 우선 구간합 (prefix sum)과 비슷한 아이디어를 이용하여 구간 XOR (prefix XOR) 를 전처리 $O(N)$, 쿼리당 $O(1)$ 에 가능하게 만든다. 구현은 다음과 같다: $pxor_i$ 을 $\bigoplus_{k=1}^{i} a_k$ 라고 하면 $pxor_i$ 는 $pxor_{i-1} \oplus a_i$ ($i=0$ 일때는 XOR 의 항등원인 $0$)로 순서대로 계산할 수 있다. 구간 XOR 쿼리 $\bigoplus_{k=i}^{j} a_k$ 은 $pxor_j \oplus pxor_{i-1}$ 로 계산할 수 있다. 구간합과 마찬가지로 1-based index 를 사용해야 구현이 편하다.
@@ -39,7 +44,7 @@ $$ \sum_{i=1}^{n} i^2 + \sum_{i=1}^{n-1} i*(i+1) $$
 
 따라서 전체 경우의수 $N(N+1)/2$ 에 우리가 구했던 "완전제곱수인 경우의 수" 를 제외하면 답이 된다. 시간복잡도는 $O(N\sqrt{N})$ 인데, 정수 $N$ 보다 작은 완전제곱수의 갯수가 $\sqrt{N}$ 이기 때문이다.
 
-## [D. Valiant's New Map](https://codeforces.com/contest/1731/problem/D)
+### [D. Valiant's New Map](https://codeforces.com/contest/1731/problem/D)
 답 $l$ 으로 이분탐색을 하면 된다. 이분탐색을 진행하는 매 iteration 마다 dp 를 사용하여 $mid$ 가 조건(변의 길이가 $mid$ 인 정사각형 안의 모든 building 의 높이가 최소 $mid$ 인지) 답이 될 수 있는지에 대해 평가할 것이다.
 
 $dp_{i,j}$ 는 $(i,j)$ 를 우하단 모서리로 하고, 영역내 모든 $a$ 의 높이가 최소 $mid$ 인 정사각형의 변의 최대 길이이다. 점화식은 다음과 같다:
@@ -56,12 +61,14 @@ $mid \leq dp_{i,j}$ 하나의 $(i,j)$ 라도 존재한다면, $mid$ 는 조건�
 
 이분탐색 내부의 DP는 [BOJ#4095](https://www.acmicpc.net/problem/4095) 와 유사하니, 비슷한 유형의 문제를 풀어본적이 없다면 한번 해결해보기를 추천한다.
 
-## [E. Graph Cost](https://codeforces.com/contest/1731/problem/E)
+### [E. Graph Cost](https://codeforces.com/contest/1731/problem/E)
 한번에 $k$ 개의 간선을 추가하는데 드는 비용은 $k+1$ 이다. 따라서 문제에서 요구하는 그래프를 최저 비용으로 만들려면 간선을 추가하는 행동의 횟수를 최소화 해야함을 알 수 있다.
 
 이 문제를 해결하는데 DP 를 포함한 여러가지 방법이 알려져있지만, [오일러 피 함수(Euler phi function)](https://ko.wikipedia.org/wiki/%EC%98%A4%EC%9D%BC%EB%9F%AC_%ED%94%BC_%ED%95%A8%EC%88%98) 를 사용하여 간선의 무게가 $k+1$ 인 간선의 개수, 즉, $gcd(u,v)=k+1$ 를 만족하는 서로 다른 정점 쌍 $(u,v)$ 의 개수는 다음과 같다.
 
-$$ \Sigma_{i=2}^{\lfloor N/(k+1) \rfloor}\phi(i) $$
+$$
+\Sigma_{i=2}^{\lfloor N/(k+1) \rfloor}\phi(i)
+$$
 
 간략히 설명하자면, gcd 가 $k+1$ 인 두 정수 쌍 $(u,v)$은 $(x(k+1),y(k+1))$ (단, $gcd(x,y)=1$) 으로 나타낼 수 있다. 따라서 $v$가 고정일때, $gcd(u,v)=k+1$ 을 만족하는 모든 $u(u<v)$ 의 개수는 $\phi(y)$ 이다. $v$ 값을 고정했을때 경우의 수를 계산했으니, 이제는 가능한 모든 $v$ 값에 대한 $\phi(y)$ 를 더해준 것이 위의 식이다.
 
@@ -69,7 +76,7 @@ $$ \Sigma_{i=2}^{\lfloor N/(k+1) \rfloor}\phi(i) $$
 
 - 뫼비우스 함수를 이용한 풀이도 가능하다고 한다.
 
-## 총평
+### 총평
 약 1년 반만에 참가한 rated contest 였다. 아예 PS를 멈추진 않고, 새로운 개념을 습득하는 것 대신 스트레스(?) 받지 않는 선에서 AtCoder 문제를 간간히 해결해왔었는데, 이것이 기초체력 향상에 약간 도움이 된것 같다. div2 에서 4솔은 처음인 것 같고, E 번도 대회 도중에 했던 발상이 어느정도 맞는 부분이 있었다는 부분에서 고무적이다.
 
 

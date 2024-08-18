@@ -41,7 +41,9 @@ for (int i = 2; i <= n; i++) {
 
 이 알고리즘의 수행시간이 $O(n \log \log n)$ 라는 것을 증명해보자. 이 알고리즘은 각 소수 $p \le n$ 에 대해서 내부 루프에서 $\frac{n}{p}$ 번의 연산을 수행할 것이다. 따라서 다음 식을 평가해야 한다:
 
-$$\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac n p = n \cdot \sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p.$$
+$$
+\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac n p = n \cdot \sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p.
+$$
 
 두가지 사실을 상기해보자.
 
@@ -50,21 +52,29 @@ $$\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac n p = n \cdot \sum_{\subs
 
 그래서 우리는 위의 식을 다음과 같이 나타낼 수 있다:
 
-$$\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p \approx \frac 1 2 + \sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k}.$$
+$$
+\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p \approx \frac 1 2 + \sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k}.
+$$
 
 첫번째 소수인 2를 합에서 제외했는데, 왜냐하면 $k = 1$ 인 경우, $k \ln k$ 는 $0$ 이고 이는 0으로 나누는 상황을 초래하기 때문이다.
 
 이제 같은 함수를 $k$ 에 대해서 $2$ 부터 $\frac n {\ln n}$ 까지 적분하여 합을 평가하자 (이 합은 직사각형 방법을 통해 적분으로 근사될 수 있다):
 
-$$\sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k} \approx \int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk.$$
+$$
+\sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k} \approx \int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk.
+$$
 
 피적분함수의 원시함수는 $\ln \ln k$ 이다. 치환과 낮은 차수의 항을 제거하여 다음과 같은 결과를 얻는다:
 
-$$\int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk = \ln \ln \frac n {\ln n} - \ln \ln 2 = \ln(\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n.$$
+$$
+\int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk = \ln \ln \frac n {\ln n} - \ln \ln 2 = \ln(\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n.
+$$
 
 이제, 원래 식으로 돌아오면 다음과 같은 근사 식을 얻을 수 있다:
 
-$$\sum_{\substack{p \le n, \\\ p\ is\ prime}} \frac n p \approx n \ln \ln n + o(n).$$
+$$
+\sum_{\substack{p \le n, \\\ p\ is\ prime}} \frac n p \approx n \ln \ln n + o(n).
+$$
 
 더욱 자세한 증명은 (연산횟수의 상수항에 대해서도 더욱 자세한 평가가 필요하다면) Hardy & Wright 의 책 "An Introduction to the Theory of Numbers" (p. 349) 에서 확인할 수 있다.
 

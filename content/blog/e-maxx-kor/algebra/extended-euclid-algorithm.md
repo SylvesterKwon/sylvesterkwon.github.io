@@ -11,7 +11,9 @@ tags: e-maxx-kor, algebra
 
 [유클리드 호제법](./euclid-algorithm.html) 이 두 정수 $a$ 와 $b$ 사이의 최대공약수 (GCD) 만을 계산할 때, 확장 유클리드 호제법 (또는 확장 유클리드 알고리즘) 또한 마찬가지로 최대공약수를 표현할 수 있는 방법이 있는데, 다음 식에서 $a$ 와 $b$ 에 대하여, 즉, 계수 $x$ 와 $y$ 를 이용하여 나타낼 수 있다:
 
-$$a \cdot x + b \cdot y = \gcd(a, b)$$
+$$
+a \cdot x + b \cdot y = \gcd(a, b)
+$$
 
 여기서 중요한 것은 언제나 위와 같은 표현을 찾을 수 있다는 것이다. 예를 들어서, $\gcd(55, 80) = 5$ 이기 때문에, 우리는 $5$ 를 항 $55$ 와 $80$ 에 대한 선형결합을 사용하여 나타낼 수 있다: $55 \cdot 3 + 80 \cdot (-2) = 5$
 
@@ -28,23 +30,33 @@ $(x, y) = (1, 0)$ 계수에서 시작해서, 재귀 호출을 역으로 추적�
 
 $(b, a \bmod b)$ 단계의 계수 $(x_1, y_1)$ 를 찾았다고 가정해보자:
 
-$$b \cdot x_1 + (a \bmod b) \cdot y_1 = g$$
+$$
+b \cdot x_1 + (a \bmod b) \cdot y_1 = g
+$$
 
 그리고 $(a, b)$ 를 위한 쌍 $(x, y)$ 을 찾고 싶다:
 
-$$ a \cdot x + b \cdot y = g$$
+$$
+a \cdot x + b \cdot y = g
+$$
 
 우리는 $a \bmod b$ 를 다음과 같이 나타낼 수 있다:
 
-$$ a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b$$
+$$
+a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b
+$$
 
 계수 $(x_1, y_1)$ 에 대한 방정식에 위의 표현을 대입하면 다음과 같다:
 
-$$ g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1$$
+$$
+g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1
+$$
 
 그리고 식을 정리하면 다음과 같다:
 
-$$g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)$$
+$$
+g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)
+$$
 
 따라서 $x$ 와 $y$ 의 값을 다음과 같이 구할 수 있다:
 

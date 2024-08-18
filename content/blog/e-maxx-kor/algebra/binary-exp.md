@@ -15,7 +15,9 @@ Binary exponentiation (또는 exponentiation by squaring)은 $a^n$ 을 $O(\log n
 
 굳이 곱셈이 아니더라도 **결합법칙 (associative property)** 을 성질로 가지는 모든 연산에 대해 사용할 수 있는 트릭이기 때문에, 다양한 상황에서 응용될 수 있다. 어떤 연산이 결합법칙을 성질로 가짐은 다음을 통해 보일 수 있다:
 
-$$(X \cdot Y) \cdot Z = X \cdot (Y \cdot Z)$$
+$$
+(X \cdot Y) \cdot Z = X \cdot (Y \cdot Z)
+$$
 
 당연하게도, 이 트릭은 모듈러 곱, 행렬 곱이나 아래에서 소개할 다른 문제들을 푸는데 적용할 수 있다.
 
@@ -29,7 +31,9 @@ $a^{b+c} = a^b \cdot a^c$ and $a^{2b} = a^b \cdot a^b = (a^b)^2$.
 Binary exponentiation 의 기본 아이디어는 지수의 이진 표현을 사용하여 작업을 분할하는 것이다.
 
 아래는 지수 $n$ 을 이진법으로 나타낸 예시이다:
-$$3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1$$
+$$
+3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1
+$$
 
 $n$ 은 이진법으로 나타내면 정확히 $\lfloor \log_2 n \rfloor + 1$ 자리의 숫자를 가지기 때문에, 만약 거듭제곱 수열 $a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}$ 의 값을 알고 있다면, 그저 $O(\log n)$ 번의 곱셈만 수행하면 답을 구할 수 있다.
 
