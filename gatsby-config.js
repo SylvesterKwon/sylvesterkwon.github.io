@@ -15,10 +15,11 @@ module.exports = {
       summary: `개인 블로그`,
     },
     description: ``,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://sylvesterkwon.github.io/`,
     social: {},
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -55,9 +56,9 @@ module.exports = {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`
-            }
-          }
+              strict: `ignore`,
+            },
+          },
         ],
       },
     },
