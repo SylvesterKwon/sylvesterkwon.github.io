@@ -3,8 +3,10 @@ title: 2024 아주대학교 프로그래밍 경시대회 APC Extra 문제 풀이
 mathjax: true
 date: 2025-01-27 00:00:00
 tags: ps
-featuredImage: ../../../src/images/blog/problem-solving/apc-2023-div1/apc-2023-scoreboard.png
+featuredImage: ../../../src/images/blog/problem-solving/apc-2024-extra/apc-extra-banner.png
 ---
+
+![apc-extra-banner](../../../src/images/blog/problem-solving/apc-2024-extra/apc-extra-banner.png)
 
 2024년 아주대학교 프로그래밍 경시대회(APC)에 extra division 이 신설되어 대회가 추가 개최되었다. 기존 APC에는 2개의 division이 존재하는데, 이번에 신설된 division은 기존 APC의 쉬운 division에 비해서도 쉬운 난이도의 대회로 기획되었다. 이번엔 참여자가 아닌 출제진이 되어 문제 출제 및 검수에 참여하였으며 이를 기념하여 대회 종료 이후 모든 문제를 풀이해보고 출제 후기를 남긴다.
 
@@ -115,13 +117,13 @@ $3 \times 3 \times 3$ 가 아닌 다른 형태의 조각에서 $3 \times 3 \time
 - 내가 출제한 문제이다. 나는 실제로 지문처럼 빵에 있는 건포도를 좋아하지 않는 편이다. 건포도의 맛이 너무 강렬해서 빵맛을 죽이기 때문에 어울리지 않는 조합이라고 생각한다. 과유불급이라고…
 - 대회가 끝나고 이 문제와 관련한 후기가 몇개 올라왔다. 다들 재밌게 풀어주신 것 같아 기분이 좋다.
     
-    ![Review 1](../../../src/images/blog/problem-solving/apc-extra/review1.png)
+    ![Review 1](../../../src/images/blog/problem-solving/apc-2024-extra/review1.png)
     
-    ![Review 2](../../../src/images/blog/problem-solving/apc-extra/review2.png)
+    ![Review 2](../../../src/images/blog/problem-solving/apc-2024-extra/review2.png)
     
-    ![Review 3](../../../src/images/blog/problem-solving/apc-extra/review3.png)
+    ![Review 3](../../../src/images/blog/problem-solving/apc-2024-extra/review3.png)
 
-    ![Review 4](../../../src/images/blog/problem-solving/apc-extra/review4.png)
+    ![Review 4](../../../src/images/blog/problem-solving/apc-2024-extra/review4.png)
     
 
 ## 출제 후기
@@ -134,6 +136,4 @@ $3 \times 3 \times 3$ 가 아닌 다른 형태의 조각에서 $3 \times 3 \time
 - $3\times3\times3$ 케이스에 대한 힌트를 처음에는 문제 예제를 통해서 흘릴지 말지에 대한 논의도 있었다. $3\times3\times3$ 예제 그대로 노골적으로 주는 대신 $5\times3\times3$ → $3\times3\times3$ + $2\times3\times3$ 와 같이 분해가 된다는 식으로… [akim9905](https://www.acmicpc.net/user/akim9905)님이 그냥 이 예제를 지워버리자고 제안을 했다. 아무도 못푸는 0솔 문제가 될 것 같아서 걱정이 되었는데, 온사이트에서 다행히도 1솔이 기록되었다. 지금 돌아보니 덕분에 문제가 더 재밌어진 것 같다.
 - 검수 과정에서 문제 지문에 대한 질문이 많이 들어왔다. 특히 지문 본문의 마지막 문단은 정말 많은 수정을 거쳤어야 했다. 사람들끼리 대화를 할때는 우리가 가진 맥락이 더 풍부한 경우가 많고 모호성이 있으면 그자리에서 질문을 통해 모호성을 해결할 수 있지만 문제 지문은 신문처럼 한번 발행되면 수정하기 어려운 부분이 있어서 아주 세심한 고민이 필요한 부분이라는 것을 알게 되었다. 계속 내가 쓴 지문을 읽다보니 이상한 문장도 [뇌이징](https://namu.wiki/w/%EB%87%8C%EC%9D%B4%EC%A7%95)이 되어서 말이 되는 것 처럼 보이고… peer review가 가장 절실하게 필요한 단계이다. 검수과정에서 많은 논의와 수정을 거친 결과, 다행히 문제 공개 이후 지문에 대한 질문은 없었다.
 
-문제를 풀면서 생각해본적이 없었는데, 문제 하나를 만드는 것도 정말 품이 많이 든다는 것을 알게 되었다. 졸업전에 이런식으로 교내 대회 운영에 기여할 수 있어서 좋은 경험이였다. 내년에도 APC extra가 열릴지 말지는 모르겠지만(하반기에 열린다면 나는 없다! 하하!) 이런 난이도의 대회가 쭉 유지되어서 PS에 관심 없던 사람도 PS에 매력을 느낄 수 있는 계기가 되었으면 좋겠다.
-
-대회 준비하느라 고생하신 운영&출제&검수진분들 그리고 특히 참가자분들 모두 수고많으셨습니다.
+문제를 풀면서 생각해본적이 없었는데, 문제 하나를 만드는 것도 정말 품이 많이 든다는 것을 알게 되었다. 졸업전에 이런식으로 교내 대회 운영에 기여할 수 있어서 좋은 경험이였다. 내년에도 APC extra가 열릴지 말지는 모르겠지만(하반기에 열린다면 나는 없다! 하하!) 이런 난이도의 대회가 쭉 유지되어서 PS에 관심 없던 사람도 PS에 매력을 느낄 수 있는 계기가 되었으면 좋겠다. 마지막으로, 대회 준비하느라 고생하신 운영, 출제, 검수진분들 그리고 특히 참가자분들 모두 수고많으셨습니다.
