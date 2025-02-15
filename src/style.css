@@ -27,13 +27,14 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: "MontserratVariable", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  --fontFamily-leagacy-sans: "MontserratVariable", system-ui, -apple-system,
+  BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --fontFamily-sans: "HelveticaNeue Regular", "sans-serif", "Noto Sans KR" "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
-  --font-body: var(--fontFamily-serif);
+  /* --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif; */
+  --font-body: var(--fontFamily-sans);
+  --font-blog-title: var(--fontFamily-leagacy-sans);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
@@ -141,20 +142,6 @@ h6 {
   font-size: var(--fontSize-1);
 }
 
-h1 > a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h2 > a,
-h3 > a,
-h4 > a,
-h5 > a,
-h6 > a {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* Prose */
 
 p {
@@ -257,6 +244,20 @@ a:focus {
   margin: 0;
 }
 
+.main-heading > a {
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-blog-title);
+}
+.post-list-item h2 > a,
+.post-list-item h3 > a,
+.post-list-item h4 > a,
+.post-list-item h5 > a,
+.post-list-item h6 > a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .post-list-item {
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
@@ -279,7 +280,7 @@ a:focus {
 
 .header-link-home {
   font-weight: var(--fontWeight-bold);
-  font-family: var(--font-heading);
+  font-family: var(--font-blog-title);
   text-decoration: none;
   font-size: var(--fontSize-2);
 }
