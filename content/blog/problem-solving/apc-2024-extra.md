@@ -1,5 +1,5 @@
 ---
-title: 2024 아주대학교 프로그래밍 경시대회 Extra 문제 풀이 및 출제 후기
+title: 2024 아주대학교 프로그래밍 경시대회 APC Extra 문제 풀이 및 출제 후기
 mathjax: true
 date: 2025-01-27 00:00:00
 tags: ps
