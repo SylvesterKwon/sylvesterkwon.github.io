@@ -12,4 +12,3 @@ $ gatsby develop
 - [ ] Dark mode 추가
 - [ ] 포스트 검색기능 추가
 - [ ] 포스트 태그 기능 추가
-- [ ] markdown heading link 스타일 추가 (heading 이 URL 이여도 일반 텍스트처럼 검은색으로 표현되는 문제 있음)
