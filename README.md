@@ -4,8 +4,12 @@
 오류 제보나 기타 제안은 제 이메일 sylvesterkwon@gmail.com 이나 github issue 로 제보해주시면 대단히 감사하겠습니다. :bow:
 
 ## 개발환경 셋업
-```shell
-$ gatsby develop
+```bash
+npm install
+```
+
+```bash
+npm run develop
 ```
 
 ## TODO
