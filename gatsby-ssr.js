@@ -10,7 +10,7 @@ const React = require("react")
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
-  setHtmlAttributes({ lang: `en` })
+  setHtmlAttributes({ lang: `ko` })
   setHeadComponents([
     React.createElement("meta", {
       key: "color-scheme",

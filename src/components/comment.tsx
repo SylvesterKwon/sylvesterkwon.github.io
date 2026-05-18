@@ -1,10 +1,10 @@
 import React, { createRef, useEffect } from "react"
 
 export default function Comment() {
-  const containerRef = createRef()
+  const containerRef = createRef<HTMLDivElement>()
   useEffect(() => {
     const utterances = document.createElement("script")
-    const attributes = {
+    const attributes: Record<string, string> = {
       src: "https://utteranc.es/client.js",
       repo: "SylvesterKwon/sylvesterkwon.github.io",
       "issue-term": "pathname",
@@ -15,7 +15,7 @@ export default function Comment() {
     Object.entries(attributes).forEach(([key, value]) => {
       utterances.setAttribute(key, value)
     })
-    containerRef.current.appendChild(utterances)
+    containerRef.current?.appendChild(utterances)
   })
   return <div id="comment" ref={containerRef} />
 }
