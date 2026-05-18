@@ -8,7 +8,7 @@ export default function Comment() {
       src: "https://utteranc.es/client.js",
       repo: "SylvesterKwon/sylvesterkwon.github.io",
       "issue-term": "pathname",
-      theme: "github-light",
+      theme: "preferred-color-scheme",
       crossorigin: "anonymous",
       async: "true",
     }

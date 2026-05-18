@@ -8,6 +8,7 @@ import "./src/style.css"
 
 // Highlighting for code blocks
 import "prismjs/themes/prism.css"
+import "./src/prism-dark.css"
 
 // For Katex rendering
 import "katex/dist/katex.min.css"
