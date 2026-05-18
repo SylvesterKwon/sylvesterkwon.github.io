@@ -14,7 +14,7 @@ module.exports = {
       name: `권도현`,
       summary: `개인 블로그`,
     },
-    description: ``,
+    description: `SylvesterKwon's personal blog`,
     siteUrl: `https://sylvesterkwon.github.io/`,
     social: {},
   },
@@ -108,7 +108,7 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "ASIX's AXIS RSS Feed",
           },
         ],
       },
@@ -116,8 +116,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `Gatsby`,
+        name: `ASIX's AXIS`,
+        short_name: `ASIX`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
