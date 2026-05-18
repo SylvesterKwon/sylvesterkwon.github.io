@@ -30,8 +30,10 @@
   --fontFamily-leagacy-sans: "MontserratVariable", system-ui, -apple-system,
   BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
   sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --fontFamily-sans: "HelveticaNeue Regular", "sans-serif", "Noto Sans KR" "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --fontFamily-sans: "HelveticaNeue Regular", "Apple SD Gothic Neo",
+    "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif; */
   --font-body: var(--fontFamily-sans);
   --font-blog-title: var(--fontFamily-leagacy-sans);
