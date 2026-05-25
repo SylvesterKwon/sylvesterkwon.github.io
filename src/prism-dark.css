@@ -5,11 +5,18 @@
  * Prism light theme (imported in gatsby-browser.js) remains in effect.
  */
 
+.token.operator,
+.token.entity,
+.token.url {
+  background: none;
+}
+
 @media (prefers-color-scheme: dark) {
   code[class*="language-"],
   pre[class*="language-"] {
     color: #ccc;
     background: none;
+    text-shadow: none;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     font-size: 1em;
     text-align: left;
